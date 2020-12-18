@@ -5,5 +5,5 @@ COPY package.json /app
 COPY package-lock.json /app
 COPY src/ /app/src/
 RUN npm install
-CMD [ "npm", "run", "serve" ]
+CMD [ "npm", "start" ]
 EXPOSE 8000

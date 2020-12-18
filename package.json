@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "make test",
-    "serve": "node src/",
+    "start": "node src/",
     "servedev": "node node_modules/nodemon/bin/nodemon.js -w src src/"
   },
   "repository": {
