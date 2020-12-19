@@ -73,7 +73,7 @@ class XmlNodeElement extends XmlNode {
             return this;
         }
         let result;
-        this.children.find((child) => {
+        this.children.find((child) => { // NOSONAR
             result = child.findById(id);
             return result !== undefined;
         });

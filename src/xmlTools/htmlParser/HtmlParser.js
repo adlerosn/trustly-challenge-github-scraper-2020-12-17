@@ -39,12 +39,13 @@ class HtmlParser {
         if (url.startsWith('http://') || url.startsWith('https://')) {
             return new URL(String(url));
         }
+        let urlCopy;
         if (url.startsWith('/')) {
-            const urlCopy = new URL(String(this.url || this.base || ''));
+            urlCopy = new URL(String(this.url || this.base || ''));
             urlCopy.pathname = url;
             return urlCopy;
         }
-        const urlCopy = new URL(String(this.base || this.url || ''));
+        urlCopy = new URL(String(this.base || this.url || ''));
         if (!urlCopy.pathname.endsWith('/')) {
             urlCopy.pathname += '/';
         }
