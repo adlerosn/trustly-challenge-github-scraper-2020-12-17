@@ -20,7 +20,7 @@ function tokenizeXml(markup) {
     // Most likely it wouldn't work if there was inline JS.
     const xmlTokens = tagDataPairs.flatMap(([token, data]) => [
         (new XmlTokenTagBuilder(token)).build(),
-        new XmlTokenData(unescapeHtml(data)),
+        new XmlTokenData(unescapeHtml(data || '')),
     ]);
     return xmlTokens;
 }

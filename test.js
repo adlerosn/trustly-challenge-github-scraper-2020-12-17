@@ -2,7 +2,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import assert from 'assert';
 import mocha from 'mocha';
+import fs from 'fs';
 import parseHtml from './src/xmlTools/htmlParser/index.js';
+// import * as scrapers from './src/scrapers/index.js';
 
 mocha.describe('HtmlParser', () => {
     mocha.describe('#construct()', () => {
@@ -66,4 +68,23 @@ mocha.describe('HtmlXmlWrapper', () => {
             });
         });
     });
+});
+
+mocha.describe('autodiscoverGitHubPage', () => {
+    const files = fs.readdirSync('./test_assets');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const file of files) {
+        // const content = fs.readFileSync(`./test_assets/${file}`);
+        const expectsCorrect = file.includes('repo_listing') || file.includes('file_');
+        const expectedCorrectnessLabel = expectsCorrect ? 'correctly' : 'incorrectly';
+        mocha.it(`Deserializes ${expectedCorrectnessLabel} the file ${file}`, () => {
+            /* Uncomment everything needed for this to work and it'll hang
+            const scraperPage = scrapers.gitHub.autodiscoverGitHubPage(parseHtml(content, 'https://github.com/'));
+            assert.strictEqual(
+                scraperPage !== undefined,
+                expectsCorrect,
+            );
+            */
+        });
+    }
 });
