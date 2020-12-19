@@ -1,14 +1,15 @@
 import cors from 'cors';
 import express from 'express';
-import { NODE_PORT } from './runtime_constants.js';
-import { index_router } from './controllers/index.js';
-import { github_scraper_router } from './controllers/github_scraper.js';
+import githubScraper from './controllers/githubScraper.js';
+import home from './controllers/home.js';
+import { NODE_PORT } from './runtimeConstants.js';
 
-let app = express();
+const app = express();
+app.disable('x-powered-by');
 app.use(cors());
 
-app.use('', index_router);
-app.use('', github_scraper_router);
+app.use('', home);
+app.use('', githubScraper);
 
 app.listen(NODE_PORT, () => {
     console.log(`Listening to http://localhost:${NODE_PORT}`);
