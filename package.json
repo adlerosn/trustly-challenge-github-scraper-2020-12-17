@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/adlerosn/trustly-challenge-github-scraper-2020-12-17#readme",
   "engines": {
-    "node": "14.x"
+    "node": "15.x"
   },
   "dependencies": {
     "axios": "^0.21.0",
