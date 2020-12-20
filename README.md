@@ -104,12 +104,12 @@ The URL follows the format "`https://trustly-github-scraper.herokuapp.com/{retur
    - yml
    - yaml
 
-Let's say you want information about the repository "`https://github.com/ppy/osu`" in YAML.
-You just need to identify that "`ppy`" is the "`user`", "`osu`" is the "`repository`" and "`yaml`" is the "`format`". Them, you build the URL:
+Let's say you want information about the repository "`https://github.com/ppy/osu-iPhone`" in YAML.
+You just need to identify that "`ppy`" is the "`user`", "`osu-iPhone`" is the "`repository`" and "`yaml`" is the "`format`". Them, you build the URL:
 
-`https://trustly-github-scraper.herokuapp.com/yaml/ppy/osu`
+`https://trustly-github-scraper.herokuapp.com/yaml/ppy/osu-iPhone`
 
-That's it.
+That's it. It took around 20 seconds to load for the first time.
 
 Addressing Caching
 ------------------
@@ -218,7 +218,9 @@ The NodeJs process listens to some environment variables. They are:
 
 Beyond the Requirements
 -----------------------
-On GitHub, "`https://github.com/ppy/osu/tree/master/osu.Game.Rulesets.Osu`" describes a folder. It's possible to get its report by acessing "`https://trustly-github-scraper.herokuapp.com/json/ppy/osu/tree/master/osu.Game.Rulesets.Osu`".
+On GitHub, "`https://github.com/dwws-ufes/2014-ciclovix/tree/master/src/br/ufes/inf/lprm/ciclovix`" describes a project folder. It's possible to get its report by acessing "`https://trustly-github-scraper.herokuapp.com/json/dwws-ufes/2014-ciclovix/tree/master/src/br/ufes/inf/lprm/ciclovix`".
+
+This specific repository's folder takes around 5 seconds to load for the first time.
 
 Caveats and Attention Points
 ----------------------------
