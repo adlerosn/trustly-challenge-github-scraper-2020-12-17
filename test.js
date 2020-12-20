@@ -1,90 +1,42 @@
-/* eslint-disable sort-imports */
 /* eslint-disable import/no-extraneous-dependencies */
+import * as scrapers from './src/scrapers/index.js';
+
 import assert from 'assert';
-import mocha from 'mocha';
 import fs from 'fs';
-import parseHtml from './src/xmlTools/htmlParser/index.js';
-// import * as scrapers from './src/scrapers/index.js';
+import mocha from 'mocha';
 
-mocha.describe('HtmlParser', () => {
-    mocha.describe('#construct()', () => {
-        mocha.it('should deserialize correctly', () => {
-            assert.strictEqual(
-                parseHtml('<a href="http://example.com">').toString(),
-                '<a href="http://example.com" />',
-            );
-        });
-        mocha.it('should deserialize correctly', () => {
-            assert.strictEqual(
-                parseHtml('<p> a <BR>b</p>').toString(),
-                '<p> a <br />b</p>',
-            );
-        });
-    });
-});
-
-mocha.describe('HtmlXmlWrapper', () => {
-    mocha.describe('#findById(_)', () => {
-        mocha.describe('#getAttribute(_)', () => {
-            mocha.it('should be able to find an element by id and retrieve some attribute', () => {
-                assert.strictEqual(
-                    parseHtml('<p id=def><a id=abc href="http://example.com"></p>')
-                        .findById('abc')
-                        .next().value
-                        .getAttribute('href'),
-                    'http://example.com',
-                );
+mocha.describe('>> unitTesting', () => {
+    mocha.describe('autodiscoverGitHubPage', () => {
+        const files = fs.readdirSync('./test_assets').filter((file) => file.endsWith('.html'));
+        const filesForSuccess = files.filter((file) => (file.includes('repo_listing_') || file.includes('file_')));
+        mocha.describe('#constructor', () => {
+            files.forEach(async (file) => {
+                const content = fs.readFileSync(`./test_assets/${file}`, 'utf8');
+                const expectsCorrect = filesForSuccess.includes(file);
+                const expectedCorrectnessLabel = expectsCorrect ? 'successfully' : 'unsuccessfully';
+                mocha.it(`Deserializes ${expectedCorrectnessLabel} the file ${file}`, () => {
+                    const scraperPage = scrapers.gitHub.autodiscoverGitHubPage(content);
+                    assert.strictEqual(
+                        scraperPage !== undefined,
+                        expectsCorrect,
+                    );
+                });
             });
         });
-    });
-    mocha.describe('#getRecursiveChildrenTag(_)', () => {
-        mocha.describe('#getAbsoluteHref()', () => {
-            mocha.it('should get absolute links', () => {
-                assert.notStrictEqual(
-                    parseHtml('<a href="http://example.com">')
-                        .getRecursiveChildrenTag('a')
-                        .next().value
-                        .getAbsoluteHref(),
-                    new URL('http://example.com'),
-                );
-            });
-            mocha.it('should get abolute links from relative paths', () => {
-                assert.notStrictEqual(
-                    parseHtml('<a href="/example.txt">', 'http://example.com')
-                        .getRecursiveChildrenTag('a')
-                        .next().value
-                        .getAbsoluteHref(),
-                    new URL('http://example.com/example.txt'),
-                );
-            });
-            mocha.it('should get abolute links from relative paths in pages with a base', () => {
-                assert.notStrictEqual(
-                    parseHtml('<base href="http://example.com"><a href="/example.txt">')
-                        .getRecursiveChildrenTag('a')
-                        .next().value
-                        .getAbsoluteHref(),
-                    new URL('http://example.com/example.txt'),
-                );
+        mocha.describe('#getData()', () => {
+            filesForSuccess.forEach(async (file) => {
+                const content = fs.readFileSync(`./test_assets/${file}`, 'utf8');
+                mocha.it(`Retrieves the correct content from the file ${file}`, () => {
+                    const scraperPage = scrapers.gitHub.autodiscoverGitHubPage(content);
+                    const data = JSON.parse(fs.readFileSync(`./test_assets/${file}.json`, 'utf8'));
+                    assert.deepStrictEqual(
+                        JSON.parse(JSON.stringify(
+                            scraperPage.getData() || scraperPage.getListing(),
+                        )),
+                        data,
+                    );
+                });
             });
         });
     });
-});
-
-mocha.describe('autodiscoverGitHubPage', () => {
-    const files = fs.readdirSync('./test_assets');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const file of files) {
-        // const content = fs.readFileSync(`./test_assets/${file}`);
-        const expectsCorrect = file.includes('repo_listing') || file.includes('file_');
-        const expectedCorrectnessLabel = expectsCorrect ? 'correctly' : 'incorrectly';
-        mocha.it(`Deserializes ${expectedCorrectnessLabel} the file ${file}`, () => {
-            /* Uncomment everything needed for this to work and it'll hang
-            const scraperPage = scrapers.gitHub.autodiscoverGitHubPage(parseHtml(content, 'https://github.com/'));
-            assert.strictEqual(
-                scraperPage !== undefined,
-                expectsCorrect,
-            );
-            */
-        });
-    }
 });

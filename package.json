@@ -1,6 +1,6 @@
 {
   "name": "trustly-challenge-github-scraper",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A challenge for a Full Stack developer position",
   "module": "src/index.js",
   "type": "module",
@@ -23,17 +23,19 @@
     "node": "14.x"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "got": "^10.6.0",
-    "html-escaper": "^3.0.0"
+    "got": "^10.7.0",
+    "html-escaper": "^3.0.0",
+    "js-yaml": "^3.14.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
-    "eslint": "^7.15.0",
+    "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^30.7.8",
+    "eslint-plugin-jsdoc": "^30.7.9",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6"
   }

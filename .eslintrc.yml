@@ -29,6 +29,7 @@ rules:
   no-console: 0
   import/no-cycle: 0
   import/extensions: 0
+  import/order: 0 # let sort-imports handle this
   sort-imports:
     - 2
     - ignoreCase: true

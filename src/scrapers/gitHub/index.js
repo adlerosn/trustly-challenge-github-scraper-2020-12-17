@@ -9,8 +9,10 @@ const KNOWN_PAGE_CLASSES = [
 ];
 
 /**
- * @param {HtmlXmlWrapper} htmlXmlWrapper The already-downloaded web page
- * @returns {AbstractScrapablePage} The scrapable page
+ * Detects the page fed to the function and, if known, return a ScrapablePage instance for it.
+ *
+ * @param {!HtmlXmlWrapper} htmlXmlWrapper The already-downloaded web page
+ * @returns {AbstractScrapablePage?} The scrapable page
  */
 function autodiscoverGitHubPage(htmlXmlWrapper) {
     const PageType = KNOWN_PAGE_CLASSES.slice(1).find((cls) => cls.doesHtmlRepresentThis(htmlXmlWrapper));

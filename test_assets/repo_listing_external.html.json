@@ -1,0 +1,26 @@
+[
+    {
+        "kind": "submodule",
+        "link": "/inspirit/PS3EYEDriver/tree/b31402953d7d7b0c24b05c79b9c5933fce2b4773"
+    },
+    {
+        "kind": "directory",
+        "link": "/thp/psmoveapi/tree/master/external/glfw"
+    },
+    {
+        "kind": "directory",
+        "link": "/thp/psmoveapi/tree/master/external/glm"
+    },
+    {
+        "kind": "submodule",
+        "link": "/thp/hidapi/tree/38681c734965636c9fd710dc3898d90aaf923bb9"
+    },
+    {
+        "kind": "submodule",
+        "link": "/libusb/libusb/tree/b4c9b4272d61cecffeddeb91abd31efe256a6224"
+    },
+    {
+        "kind": "file",
+        "link": "/thp/psmoveapi/blob/master/external/README"
+    }
+]

@@ -1,3 +1,1 @@
-class ValueError extends Error { }
-
-export default ValueError;
+export default class ValueError extends Error { }

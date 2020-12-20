@@ -1,0 +1,50 @@
+[
+    {
+        "kind": "directory",
+        "link": "/adlerosn/comercioeletronico-recomendacao/tree/master/testes"
+    },
+    {
+        "kind": "directory",
+        "link": "/adlerosn/comercioeletronico-recomendacao/tree/master/web"
+    },
+    {
+        "kind": "directory",
+        "link": "/adlerosn/comercioeletronico-recomendacao/tree/master/wiki-images"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/.gitignore"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/.travis.yml"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/001-CSVtoSQLite.py"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/002-normalize.py"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/003-optimize.py"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/README.md"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/cli.py"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/libRecomendacao.py"
+    },
+    {
+        "kind": "file",
+        "link": "/adlerosn/comercioeletronico-recomendacao/blob/master/someUtils.py"
+    }
+]
