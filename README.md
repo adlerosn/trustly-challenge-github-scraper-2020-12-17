@@ -231,7 +231,7 @@ Caveats and Attention Points
  - Files with multiple chained extensions (such as "`.tar.gz`") gets only its last extension in the extension list.
  - `null` cannot be an object key on popular serialization methods (such as JSON); as a way of circumventing this limitation, "`noExtension/`" was used as the string key used to represent files without any extension (as `/` is a reserved character for paths, it won't ).
  - Receiving a 429 from GitHub will abort the current scraping. However, individual page will still be cached and, thus, a new request might resume.
- - A request might timeout if Heroku infrastructure decides the request is taking too long to complete. This will only happen while the cache isn't populated fully; after the first successful attempt, further requests should not timeout.
+ - A request might timeout if Heroku infrastructure decides the request is taking too long to complete (more than 30 seconds). This will only happen while the cache isn't populated fully; after the first successful attempt, further consecutive requests should not timeout.
  - If a repository is *way too large*, increasing cache size might be needed.
 
 Possible Improvements
